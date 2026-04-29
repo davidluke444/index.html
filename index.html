@@ -1,98 +1,182 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dalumaga</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dalumaga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #00ff88;
+      --dark: #0a0a0a;
+      --black: #000;
+      --gray: #1a1a1a;
+    }
 
-        header {
-            background-color: #0a0a0a;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 3px solid #00ff88;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
 
-        header h1 {
-            color: #00ff88;
-            margin: 0;
-        }
+    body {
+      background: linear-gradient(180deg, #000, #050505);
+      color: #fff;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,255,136,0.2);
+    }
 
-        section {
-            margin-bottom: 40px;
-        }
+    header h1 {
+      color: var(--green);
+      font-weight: 700;
+    }
 
-        h2 {
-            color: #00ff88;
-            border-left: 5px solid #00ff88;
-            padding-left: 10px;
-        }
+    nav a {
+      color: #ccc;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-        footer {
-            background-color: #0a0a0a;
-            text-align: center;
-            padding: 20px;
-            border-top: 3px solid #00ff88;
-            font-size: 14px;
-        }
-    </style>
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      background: radial-gradient(circle at center, rgba(0,255,136,0.15), transparent);
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      background: var(--green);
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--gray);
+      padding: 25px;
+      border-radius: 15px;
+      transition: 0.3s;
+      border: 1px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border: 1px solid rgba(0,255,136,0.3);
+    }
+
+    .card h3 {
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid rgba(0,255,136,0.2);
+      color: #888;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <h1>Dalumaga</h1>
-    <p>Empresa sostenible y familiar</p>
+  <h1>Dalumaga</h1>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#filosofia">Filosofía</a>
+    <a href="#familia">Familia</a>
+    <a href="#origen">Origen</a>
+  </nav>
 </header>
 
+<section class="hero">
+  <h2>Juegos sostenibles que conectan personas</h2>
+  <p>Creando experiencias ecológicas, conscientes y familiares para un mundo mejor.</p>
+  <button class="btn">Descubrir más</button>
+</section>
+
 <div class="container">
+  <div class="grid">
 
-    <section>
-        <h2>Sobre Nosotros</h2>
-        <p>
-            Dalumaga es una empresa sostenible, ecológica y de carácter familiar. Nuestro compromiso con el medio ambiente va más allá de las palabras: diseñamos y producimos juegos utilizando materiales responsables, reciclables o de bajo impacto ambiental, priorizando procesos de fabricación que reduzcan la huella ecológica y fomenten un consumo consciente.
-        </p>
-    </section>
+    <div class="card" id="sobre">
+      <h3>Sobre Nosotros</h3>
+      <p>Dalumaga es una empresa sostenible, ecológica y de carácter familiar. Diseñamos juegos con materiales responsables, reciclables y de bajo impacto ambiental.</p>
+    </div>
 
-    <section>
-        <h2>Nuestra Filosofía</h2>
-        <p>
-            Entendemos la ecología como una forma de pensar y actuar. Por ello, no solo cuidamos los materiales, sino también todo el ciclo de vida de nuestros productos: desde su diseño hasta su uso y posterior reciclaje. Apostamos por reducir residuos, evitar plásticos innecesarios y promover hábitos respetuosos con el entorno a través del propio juego.
-        </p>
-    </section>
+    <div class="card" id="filosofia">
+      <h3>Nuestra Filosofía</h3>
+      <p>Entendemos la ecología como una forma de vida. Cuidamos todo el ciclo del producto y promovemos el consumo responsable y la reducción de residuos.</p>
+    </div>
 
-    <section>
-        <h2>Enfoque Familiar</h2>
-        <p>
-            En cuanto al enfoque familiar, Dalumaga nace con la intención de fortalecer los vínculos entre las personas. Nuestros juegos están pensados para reunir a familias y amigos, fomentar la comunicación, el respeto y la cooperación, y crear momentos compartidos de calidad. Creemos que el juego es una herramienta poderosa para mejorar las relaciones, desconectar de la rutina y reconectar entre nosotros.
-        </p>
-    </section>
+    <div class="card" id="familia">
+      <h3>Enfoque Familiar</h3>
+      <p>Creamos juegos que fortalecen vínculos, fomentan la comunicación y generan momentos de calidad entre familias y amigos.</p>
+    </div>
 
-    <section>
-        <h2>Origen</h2>
-        <p>
-            Dalumaga surge de la iniciativa de dos amigos con un objetivo común: construir una sociedad más unida, consciente y sostenible a través del entretenimiento.
-        </p>
-    </section>
+    <div class="card" id="origen">
+      <h3>Origen</h3>
+      <p>Dalumaga nace de dos amigos con un objetivo: construir una sociedad más unida, consciente y sostenible a través del juego.</p>
+    </div>
 
+  </div>
 </div>
 
 <footer>
-    <p>© 2026 Dalumaga - Todos los derechos reservados</p>
+  <p>© 2026 Dalumaga - Todos los derechos reservados</p>
 </footer>
 
 </body>
 </html>
+
+
