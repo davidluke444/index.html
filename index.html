@@ -1,0 +1,119 @@
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Leaf, Users, Globe, Sparkles } from "lucide-react";
+
+export default function DalumagaWeb() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  return (
+    <div ref={ref} className="min-h-screen bg-gradient-to-b from-green-500 via-green-600 to-green-700 text-black font-sans overflow-x-hidden">
+
+      {/* NAVBAR */}
+      <nav className="flex justify-between items-center px-8 py-4 bg-black/80 backdrop-blur-md sticky top-0 z-50">
+        <h1 className="text-2xl font-bold text-green-400">DALUMAGA</h1>
+      </nav>
+
+      {/* HERO PARALLAX */}
+      <section className="flex flex-col items-center justify-center text-center py-40 px-6">
+        <motion.h1
+          style={{ scale, opacity }}
+          className="text-6xl md:text-8xl font-extrabold mb-6 tracking-tight"
+        >
+          DALUMAGA
+        </motion.h1>
+
+        <motion.p
+          style={{ opacity }}
+          className="max-w-2xl text-xl text-black/80"
+        >
+          Empresa sostenible, ecológica y familiar que crea juegos para conectar personas y cuidar el planeta.
+        </motion.p>
+      </section>
+
+      {/* INTRO */}
+      <section className="max-w-4xl mx-auto px-6 pb-20 text-center">
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="text-lg text-black/80 leading-relaxed"
+        >
+          Dalumaga es una empresa sostenible, ecológica y familiar. Desde Dalumaga tenemos el compromiso con el medio ambiente de crear solamente juegos sostenibles y accesibles para todo el mundo.
+        </motion.p>
+      </section>
+
+      {/* VALORES PARALLAX CARDS */}
+      <section className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-10">
+        {[{
+          icon: <Leaf size={36} />,
+          title: "Sostenibilidad",
+          text: "Materiales reciclables y procesos responsables."
+        },{
+          icon: <Globe size={36} />,
+          title: "Ecología",
+          text: "Reducción de residuos y cuidado del planeta."
+        },{
+          icon: <Users size={36} />,
+          title: "Familia",
+          text: "Fortalecemos vínculos entre personas."
+        }].map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.1, rotate: 1 }}
+            transition={{ duration: 0.6, delay: i * 0.2 }}
+            viewport={{ once: true }}
+            className="bg-black text-green-400 p-8 rounded-3xl shadow-2xl"
+          >
+            <div className="mb-4">{item.icon}</div>
+            <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
+            <p>{item.text}</p>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* HISTORIA FADE + SCALE */}
+      <section className="py-32 px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto"
+        >
+          <Sparkles className="mx-auto mb-6" size={36} />
+          <h2 className="text-4xl font-bold mb-6">Nuestra historia</h2>
+          <p className="text-lg text-black/80">
+            Somos una empresa creada por dos amigos cuya intención es mejorar las relaciones sociales y familiares.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* FUNDADOR SLIDE */}
+      <section className="pb-32 px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mx-auto bg-black text-green-400 p-10 rounded-3xl shadow-2xl"
+        >
+          <h2 className="text-3xl font-bold mb-4">Fundador</h2>
+          <p className="mb-2">David Luque Moralo</p>
+          <p className="text-green-300">Ingeniero de Aviación</p>
+        </motion.div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="text-center py-8 bg-black text-green-400">
+        © {new Date().getFullYear()} DALUMAGA
+      </footer>
+    </div>
+  );
+}
