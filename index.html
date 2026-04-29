@@ -1,119 +1,98 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Leaf, Users, Globe, Sparkles } from "lucide-react";
 
-export default function DalumagaWeb() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dalumaga</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+        header {
+            background-color: #0a0a0a;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #00ff88;
+        }
 
-  return (
-    <div ref={ref} className="min-h-screen bg-gradient-to-b from-green-500 via-green-600 to-green-700 text-black font-sans overflow-x-hidden">
+        header h1 {
+            color: #00ff88;
+            margin: 0;
+        }
 
-      {/* NAVBAR */}
-      <nav className="flex justify-between items-center px-8 py-4 bg-black/80 backdrop-blur-md sticky top-0 z-50">
-        <h1 className="text-2xl font-bold text-green-400">DALUMAGA</h1>
-      </nav>
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
 
-      {/* HERO PARALLAX */}
-      <section className="flex flex-col items-center justify-center text-center py-40 px-6">
-        <motion.h1
-          style={{ scale, opacity }}
-          className="text-6xl md:text-8xl font-extrabold mb-6 tracking-tight"
-        >
-          DALUMAGA
-        </motion.h1>
+        section {
+            margin-bottom: 40px;
+        }
 
-        <motion.p
-          style={{ opacity }}
-          className="max-w-2xl text-xl text-black/80"
-        >
-          Empresa sostenible, ecológica y familiar que crea juegos para conectar personas y cuidar el planeta.
-        </motion.p>
-      </section>
+        h2 {
+            color: #00ff88;
+            border-left: 5px solid #00ff88;
+            padding-left: 10px;
+        }
 
-      {/* INTRO */}
-      <section className="max-w-4xl mx-auto px-6 pb-20 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="text-lg text-black/80 leading-relaxed"
-        >
-          Dalumaga es una empresa sostenible, ecológica y familiar. Desde Dalumaga tenemos el compromiso con el medio ambiente de crear solamente juegos sostenibles y accesibles para todo el mundo.
-        </motion.p>
-      </section>
+        footer {
+            background-color: #0a0a0a;
+            text-align: center;
+            padding: 20px;
+            border-top: 3px solid #00ff88;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
 
-      {/* VALORES PARALLAX CARDS */}
-      <section className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-10">
-        {[{
-          icon: <Leaf size={36} />,
-          title: "Sostenibilidad",
-          text: "Materiales reciclables y procesos responsables."
-        },{
-          icon: <Globe size={36} />,
-          title: "Ecología",
-          text: "Reducción de residuos y cuidado del planeta."
-        },{
-          icon: <Users size={36} />,
-          title: "Familia",
-          text: "Fortalecemos vínculos entre personas."
-        }].map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.1, rotate: 1 }}
-            transition={{ duration: 0.6, delay: i * 0.2 }}
-            viewport={{ once: true }}
-            className="bg-black text-green-400 p-8 rounded-3xl shadow-2xl"
-          >
-            <div className="mb-4">{item.icon}</div>
-            <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
-            <p>{item.text}</p>
-          </motion.div>
-        ))}
-      </section>
+<header>
+    <h1>Dalumaga</h1>
+    <p>Empresa sostenible y familiar</p>
+</header>
 
-      {/* HISTORIA FADE + SCALE */}
-      <section className="py-32 px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto"
-        >
-          <Sparkles className="mx-auto mb-6" size={36} />
-          <h2 className="text-4xl font-bold mb-6">Nuestra historia</h2>
-          <p className="text-lg text-black/80">
-            Somos una empresa creada por dos amigos cuya intención es mejorar las relaciones sociales y familiares.
-          </p>
-        </motion.div>
-      </section>
+<div class="container">
 
-      {/* FUNDADOR SLIDE */}
-      <section className="pb-32 px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto bg-black text-green-400 p-10 rounded-3xl shadow-2xl"
-        >
-          <h2 className="text-3xl font-bold mb-4">Fundador</h2>
-          <p className="mb-2">David Luque Moralo</p>
-          <p className="text-green-300">Ingeniero de Aviación</p>
-        </motion.div>
-      </section>
+    <section>
+        <h2>Sobre Nosotros</h2>
+        <p>
+            Dalumaga es una empresa sostenible, ecológica y de carácter familiar. Nuestro compromiso con el medio ambiente va más allá de las palabras: diseñamos y producimos juegos utilizando materiales responsables, reciclables o de bajo impacto ambiental, priorizando procesos de fabricación que reduzcan la huella ecológica y fomenten un consumo consciente.
+        </p>
+    </section>
 
-      {/* FOOTER */}
-      <footer className="text-center py-8 bg-black text-green-400">
-        © {new Date().getFullYear()} DALUMAGA
-      </footer>
-    </div>
-  );
-}
+    <section>
+        <h2>Nuestra Filosofía</h2>
+        <p>
+            Entendemos la ecología como una forma de pensar y actuar. Por ello, no solo cuidamos los materiales, sino también todo el ciclo de vida de nuestros productos: desde su diseño hasta su uso y posterior reciclaje. Apostamos por reducir residuos, evitar plásticos innecesarios y promover hábitos respetuosos con el entorno a través del propio juego.
+        </p>
+    </section>
+
+    <section>
+        <h2>Enfoque Familiar</h2>
+        <p>
+            En cuanto al enfoque familiar, Dalumaga nace con la intención de fortalecer los vínculos entre las personas. Nuestros juegos están pensados para reunir a familias y amigos, fomentar la comunicación, el respeto y la cooperación, y crear momentos compartidos de calidad. Creemos que el juego es una herramienta poderosa para mejorar las relaciones, desconectar de la rutina y reconectar entre nosotros.
+        </p>
+    </section>
+
+    <section>
+        <h2>Origen</h2>
+        <p>
+            Dalumaga surge de la iniciativa de dos amigos con un objetivo común: construir una sociedad más unida, consciente y sostenible a través del entretenimiento.
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 Dalumaga - Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>
